@@ -14,6 +14,10 @@ int main()
 
     cout << "Max = ";
     if (a > b) cout << a;
+    else cout << b << '\n';
+
+    cout << "Min = ";
+    if (a < b) cout << a;
     else cout << b;
 
     return 0;
