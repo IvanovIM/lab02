@@ -1,0 +1,388 @@
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob
+$ git clone git@uit.mpei.ru:IvanovIvM/cs-lab02.git project
+Cloning into 'project'...
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+remote: Enumerating objects: 15, done.
+remote: Counting objects: 100% (15/15), done.
+remote: Compressing objects: 100% (13/13), done.
+remote: Total 15 (delta 1), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (15/15), done.
+Resolving deltas: 100% (1/1), done.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob
+$ cd project  // перешли в каталог проекта «на машине Боба»
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git config user.name 'Bob (IvanovIM)'
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git config user.email 'IvanovIvM@mpei.ru'
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git add main.cpp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git commit -m 'code: произведение'
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git push
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+Everything up-to-date
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git add main.cpp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git commit -m 'code: произведение'
+[main d5d8d55] code: произведение
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git push  // отправил коммит на сервер
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 394 bytes | 197.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To uit.mpei.ru:IvanovIvM/cs-lab02.git
+   54683f8..d5d8d55  main -> main
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log --oneline --decorate --all --graph  // посмотрим историю всех веток
+* d5d8d55 (HEAD -> main, origin/main, origin/HEAD) code: произведение
+* 54683f8 first commit
+* 11b7e11 code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git pull --ff-only  // Продвинем ветку main к скачанной версии
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+Already up to date.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log --oneline --decorate --all --graph
+* d5d8d55 (HEAD -> main, origin/main, origin/HEAD) code: произведение
+* 54683f8 first commit
+* 11b7e11 code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        bin/
+        obj/
+        project.depend
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log
+commit d5d8d55fd442fe41c8d65afd6feb8109be72f3fd (HEAD -> main, origin/main, origin/HEAD)
+Author: Bob (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 14:27:50 2024 +0300
+
+    code: произведение
+
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git fetch
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 382 bytes | 29.00 KiB/s, done.
+From uit.mpei.ru:IvanovIvM/cs-lab02
+   d5d8d55..926f226  main       -> origin/main
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log --oneline --decorate --all --graph
+* 926f226 (origin/main, origin/HEAD) code: Вывод деления
+* d5d8d55 (HEAD -> main) code: произведение
+* 54683f8 first commit
+* 11b7e11 code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git pull --ff-only
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+Updating d5d8d55..926f226
+Fast-forward
+ main.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log
+commit 926f22670e3cbe1049bd3483946fcad14e5f0373 (HEAD -> main, origin/main, origin/HEAD)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 19:18:58 2024 +0300
+
+    code: Вывод деления
+
+commit d5d8d55fd442fe41c8d65afd6feb8109be72f3fd
+Author: Bob (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 14:27:50 2024 +0300
+
+    code: произведение
+
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+[detached HEAD 771cd06] code: Вывод минимума
+ 1 file changed, 4 insertions(+)
+Successfully rebased and updated refs/heads/main.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log
+commit 771cd06a4c869bc56e01e05ff2941afadc2a46bf (HEAD -> main)
+Author: Bob (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 19:53:14 2024 +0300
+
+    code: Вывод минимума
+
+commit 0ee2426c071c0b58c39d0567f2fd251f86c228f6 (origin/main, origin/HEAD)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 19:40:44 2024 +0300
+
+    code: Вывод максимума
+
+commit 926f22670e3cbe1049bd3483946fcad14e5f0373
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 19:18:58 2024 +0300
+
+    code: Вывод деления
+
+commit d5d8d55fd442fe41c8d65afd6feb8109be72f3fd
+Author: Bob (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 14:27:50 2024 +0300
+
+    code: произведение
+
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log --oneline --decorate --all --graph
+* 771cd06 (HEAD -> main) code: Вывод минимума
+* 0ee2426 (origin/main, origin/HEAD) code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git add main.cpp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git rebase --continue
+fatal: No rebase in progress?
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git push
+
+ssh: connect to host uit.mpei.ru port 22: Connection timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git push
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 406 bytes | 406.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To uit.mpei.ru:IvanovIvM/cs-lab02.git
+   0ee2426..771cd06  main -> main
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log
+commit 771cd06a4c869bc56e01e05ff2941afadc2a46bf (HEAD -> main, origin/main, origin/HEAD)
+Author: Bob (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 19:53:14 2024 +0300
+
+    code: Вывод минимума
+
+commit 0ee2426c071c0b58c39d0567f2fd251f86c228f6
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 19:40:44 2024 +0300
+
+    code: Вывод максимума
+
+commit 926f22670e3cbe1049bd3483946fcad14e5f0373
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 19:18:58 2024 +0300
+
+    code: Вывод деления
+
+commit d5d8d55fd442fe41c8d65afd6feb8109be72f3fd
+Author: Bob (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 14:27:50 2024 +0300
+
+    code: произведение
+
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log --oneline --decorate --all --graph
+* 771cd06 (HEAD -> main, origin/main, origin/HEAD) code: Вывод минимума
+* 0ee2426 code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git fetch
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git log --oneline --decorate --all --graph
+* 771cd06 (HEAD -> main, origin/main, origin/HEAD) code: Вывод минимума
+* 0ee2426 code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$ git fetch
+Enter passphrase for key '/c/Users/ivanm/.ssh/id_rsa':
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/bob/project (main)
+$
