@@ -1,0 +1,1451 @@
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02
+$ mkdir alice   // импортируем папку Алисы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02
+$ mkdir bob    // импортируем папку боба
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02
+$ cd alice    // переход на компьютер (каталог) Алисы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice
+$ mkdir project   // импортируем каталог project
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice
+$ cd project    // переход в каталог
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project
+$ cd ..   // переход на уровень выше 
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice
+$ cd project   // переход в каталог project
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project
+$ git init  // инициализируем репозитарий в текущем каталоге
+Initialized empty Git repository in C:/Users/ivanm/OneDrive/Рабочий стол/lab02/alice/project/.git/
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (master)
+$ git branch -m main   // меняем имя ветки 
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ ls -A   // смотрим где гит хранит хранит свои данные
+.git/
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git config user.name 'Alice (IvanovIM)'   // настроим репозитарий Алисы, чтобы коммиты были от ее имени
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git config user.email 'IvanovIvM@mpei.ru'
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ ls -A
+.git/  bin/  main.cpp  obj/  project.cbp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git status  // смотрим состояние рабочей копии
+On branch main // на ветке маин
+
+No commits yet // еще нет коммитов
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        bin/
+        main.cpp
+        obj/
+        project.cbp
+
+nothing added to commit but untracked files present (use "git add" to track)  // ничего не добавлено что бы коммитить, но присутствуют неотслеживаемые файлы (используйте "git add" для отслеживания)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git add main.cpp  // добавление файла в индекс, то есть в набор изменений, который войдет в очередной коммит. Начинаем отслеживать файл 
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed: // Изменения, которые должны быть зафиксированы
+  (use "git rm --cached <file>..." to unstage)
+        new file:   main.cpp
+
+Untracked files: // Неотслеживаемые файлы
+  (use "git add <file>..." to include in what will be committed)
+        bin/
+        obj/
+        project.cbp
+
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git commit -m 'code: заготовка программы'  // сделаем коммит с кородким сообщением 
+[main (root-commit) c266d31] code: заготовка программы
+ 1 file changed, 9 insertions(+)
+ create mode 100644 main.cpp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git commit 
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        bin/
+        obj/
+        project.cbp
+
+nothing added to commit but untracked files present (use "git add" to track)  // для фиксации ничего не добавлено, но присутствуют неотслеживаемые файлы (используйте "git add" для отслеживания)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        bin/
+        obj/
+        project.cbp
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git add project.cbp  // добавляем файл project.cbp
+warning: in the working copy of 'project.cbp', LF will be replaced by CRLF the next time Git touches it
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   project.cbp
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        bin/
+        obj/
+
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git commit -m 'build: добавлен файл проекта'  // делаем коммит нового файла 
+[main e1ae209] build: добавлен файл проекта
+ 1 file changed, 40 insertions(+)
+ create mode 100644 project.cbp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git status
+On branch main
+Changes not staged for commit:  // Изменения, не подготовленные для фиксации
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   main.cpp
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        bin/
+        obj/
+
+no changes added to commit (use "git add" and/or "git commit -a")  // никаких изменений для фиксации не добавлено
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git add main.cpp  // выберем файл чьи изменения должны войти в коммит 
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git commit -m "code: Вывод суммы"  // коммитим
+[main d58e73f] code: Вывод суммы
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git add main.cpp  // выбираем файл
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git commit -m 'code: Вывод суммы и разности' // коммитим изменения 
+[main 11b7e11] code: Вывод суммы и разности
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git status   // смотрим состояние рабочей копии 
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        obj/
+        project.depend
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git status  // смотрим состояние рабочей копии
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        project.depend
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git add .gitignore  
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git commit -m 'git: игнорирование каталогов'
+[main 773401d] git: игнорирование каталогов
+ 1 file changed, 2 insertions(+)
+ create mode 100644 .gitignore
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log  // посмотрим журнал репозитария
+commit 773401dc93616c283566cb27d65755421647e7de (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:52:02 2024 +0300
+
+    git: игнорирование каталогов
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --stat  // показывает файлы, измененные в коммитах
+commit 773401dc93616c283566cb27d65755421647e7de (HEAD -> main) // хэш коммита 
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>  // автор коммита 
+Date:   Tue Mar 5 23:52:02 2024 +0300 // дата и время
+
+    git: игнорирование каталогов 
+
+ .gitignore | 2 ++  // две вставки 
+ 1 file changed, 2 insertions(+)  // один файл изменен, две вставки
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+ main.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+ main.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+ project.cbp | 40 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ main.cpp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate   //показывает коммиты компактно, а также показывает ссылки, концы веток и тэги
+773401d (HEAD -> main) git: игнорирование каталогов
+11b7e11 code: Вывод суммы и разности
+d58e73f code: Вывод суммы
+e1ae209 build: добавлен файл проекта
+c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph  //делает то же для всех веток, причем коммиты отображаются в терминале в виде дерева
+* 773401d (HEAD -> main) git: игнорирование каталогов
+* 11b7e11 code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log -- main.cpp  // показывает затрагивающие main.cpp
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --grep "code:"  // показывает коммиты с code: в сообщении
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --grep "build:"   // коммиты по теме build
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log -- project.cbp  // коммиты, затрагивающие project.cbp
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git show HEAD  // текущий коммит 
+commit 773401dc93616c283566cb27d65755421647e7de (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:52:02 2024 +0300
+
+    git: игнорирование каталогов
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..4c7473d
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,2 @@
++/bin
++/obj
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git show main  // коммит по имени ветви
+commit 773401dc93616c283566cb27d65755421647e7de (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:52:02 2024 +0300
+
+    git: игнорирование каталогов
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..4c7473d
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,2 @@
++/bin
++/obj
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git show 773401dc9 // коммит по хэшу
+commit 773401dc93616c283566cb27d65755421647e7de (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:52:02 2024 +0300
+
+    git: игнорирование каталогов
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..4c7473d
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,2 @@
++/bin
++/obj
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git show HEAD~1  // просмотр предыдущего коммита 
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4 // хэш коммита
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>  // автор
+Date:   Tue Mar 5 23:47:20 2024 +0300  // дата и время
+
+    code: Вывод суммы и разности   // коментарий к коммиту
+
+diff --git a/main.cpp b/main.cpp  // просмотр различий между коммитами
+index dec99f2..0b16bab 100644  // индекс
+--- a/main.cpp  // заголовок
++++ b/main.cpp  // заголовок
+@@ -7,7 +7,8 @@ int main()  // Изменение места, изменения в файле, измененная функция
+     cout << "Enter A and B: ";
+     int a, b;
+     cin >> a >> b;
+-    cout << "A + B = " << a + b << '\n';  // удаленная сторка
++    cout << "A + B = " << a + b << '\n'  // добавленная строка
++     << "A - B = " << a - b << '\n';  // добавленная строка
+
+     return 0;
+ } // контекст 
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git show main~1  // предпоследний коммит
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+diff --git a/main.cpp b/main.cpp
+index dec99f2..0b16bab 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -7,7 +7,8 @@ int main()
+     cout << "Enter A and B: ";
+     int a, b;
+     cin >> a >> b;
+-    cout << "A + B = " << a + b << '\n';
++    cout << "A + B = " << a + b << '\n'
++     << "A - B = " << a - b << '\n';
+
+     return 0;
+ }
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git show 11b7e11685e2
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+diff --git a/main.cpp b/main.cpp
+index dec99f2..0b16bab 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -7,7 +7,8 @@ int main()
+     cout << "Enter A and B: ";
+     int a, b;
+     cin >> a >> b;
+-    cout << "A + B = " << a + b << '\n';
++    cout << "A + B = " << a + b << '\n'
++     << "A - B = " << a - b << '\n';
+
+     return 0;
+ }
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git diff  // просмотр изменений в рабочей копии
+diff --git a/main.cpp b/main.cpp  // Просмотр различий между версиями 
+index 0b16bab..16a8731 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -8,7 +8,8 @@ int main()  // обозначение места изменений в файле, измененная функция int 
+     int a, b;
+     cin >> a >> b;
+     cout << "A + B = " << a + b << '\n'
+-     << "A - B = " << a - b << '\n';  // удаленная строка 
++     << "A - B = " << a - b << '\n'   // добавленная строка
++     << "A * B = " << a * b << '\n';  // добавленная строка
+
+     return 0;
+ }
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git diff HEAD~2  // показ изменений от указанного коммита до последнего
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..4c7473d
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,2 @@
++/bin
++/obj
+diff --git a/main.cpp b/main.cpp
+index dec99f2..16a8731 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -7,7 +7,9 @@ int main()
+     cout << "Enter A and B: ";
+     int a, b;
+     cin >> a >> b;
+-    cout << "A + B = " << a + b << '\n';
++    cout << "A + B = " << a + b << '\n'
++     << "A - B = " << a - b << '\n'
++     << "A * B = " << a * b << '\n';
+
+     return 0;
+ }
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git diff HEAD~2 HEAD  // показывает разницу между указанными коммитами
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..4c7473d
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,2 @@
++/bin
++/obj
+diff --git a/main.cpp b/main.cpp
+index dec99f2..0b16bab 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -7,7 +7,8 @@ int main()
+     cout << "Enter A and B: ";
+     int a, b;
+     cin >> a >> b;
+-    cout << "A + B = " << a + b << '\n';
++    cout << "A + B = " << a + b << '\n'
++     << "A - B = " << a - b << '\n';
+
+     return 0;
+ }
+
+$ git log
+commit 773401dc93616c283566cb27d65755421647e7de (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:52:02 2024 +0300
+
+    git: игнорирование каталогов
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git diff c266d31d0b 11b7e11685  // смотрю разницу между двумя коммитами по хэшу
+diff --git a/main.cpp b/main.cpp
+index b4392ec..0b16bab 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -4,6 +4,11 @@ using namespace std;
+
+ int main()
+ {
+-    cout << "Hello world!" << endl;
++    cout << "Enter A and B: ";
++    int a, b;
++    cin >> a >> b;
++    cout << "A + B = " << a + b << '\n'
++     << "A - B = " << a - b << '\n';
++
+     return 0;
+ }
+diff --git a/project.cbp b/project.cbp
+new file mode 100644
+index 0000000..99bb702
+--- /dev/null
++++ b/project.cbp
+@@ -0,0 +1,40 @@
++<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
++<CodeBlocks_project_file>
++       <FileVersion major="1" minor="6" />
++       <Project>
++               <Option title="project" />
++               <Option pch_mode="2" />
++               <Option compiler="gcc" />
++               <Build>
++                       <Target title="Debug">
++                               <Option output="bin/Debug/project" prefix_auto="1" extension_auto="1" />
++                               <Option object_output="obj/Debug/" />
++                               <Option type="1" />
++                               <Option compiler="gcc" />
++                               <Compiler>
++                                       <Add option="-g" />
++                               </Compiler>
++                       </Target>
++                       <Target title="Release">
++                               <Option output="bin/Release/project" prefix_auto="1" extension_auto="1" />
++                               <Option object_output="obj/Release/" />
++                               <Option type="1" />
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git reset --hard HEAD~1  // откат к предыдущему коммиту (ключ --hard означает, что нужно привести рабочую копию точно к состоянию выбранного коммита)
+HEAD is now at 11b7e11 code: Вывод суммы и разности
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git checkout HEAD -- main.cpp // Уберем изменения в main.cpp. Откатим этот файл к состоянию в последнем коммите (HEAD) 
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4 (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ ssh-keygen
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/c/Users/ivanm/.ssh/id_ed25519): /c/Users/ivanm/.ssh/id_ed25519
+/c/Users/ivanm/.ssh/id_ed25519 already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/ivanm/.ssh/id_ed25519
+Your public key has been saved in /c/Users/ivanm/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:sVBN+bbPcGRNmbi8IAszVLpkOMqQ8n8nsc+UM9apbvE ivanm@LAPTOP-54AHA1CP
+The key's randomart image is:
++--[ED25519 256]--+
+|        o+..  . o|
+|  .   .o. o  . o.|
+|.o   oo+.  .. .o |
+|..o . +=.+ .ooo .|
+|  .o  ..S o..+.  |
+|   .   o.+ .o..  |
+|    . + Boo  =   |
+|     . B.+E   o  |
+|       o=        |
++----[SHA256]-----+
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ eval $(ssh-agent -s)
+Agent pid 2674
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ ssh-add
+Enter passphrase for /c/Users/ivanm/.ssh/id_rsa:
+Identity added: /c/Users/ivanm/.ssh/id_rsa (ivanm@LAPTOP-54AHA1CP)
+Identity added: /c/Users/ivanm/.ssh/id_ed25519 (ivanm@LAPTOP-54AHA1CP)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ cat ~/.ssh/id_rsa.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFrN3bkrmBf4zI34LNMnBCsNSTVXZa9/tYiW//k2Scst ivanm@LAPTOP-54AHA1CP
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git remote add origin git@uit.mpei.ru:IvanovIvM/cs-lab02.git
+error: remote origin already exists.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push -u origin main
+remote: Verify
+fatal: Authentication failed for 'http://uit.mpei.ru/git/IvanovIvM/cs-lab02.git/'
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git remote add origin http://uit.mpei.ru/git/IvanovIvM/cs-lab02.git
+error: remote origin already exists.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push -u origin main
+remote: Verify
+fatal: Authentication failed for 'http://uit.mpei.ru/git/IvanovIvM/cs-lab02.git/'
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git config --unset credential.helper
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ unset SSH_ASKPASS
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git remote set-url origin http://uit.mpei.ru/git/IvanovIvM/cs-lab02.git
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push -u origin main
+remote: Verify
+fatal: Authentication failed for 'http://uit.mpei.ru/git/IvanovIvM/cs-lab02.git/'
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ nslookup uit.mpei.ru
+Server:  rootdc1.mpei.local
+Address:  10.1.1.5
+
+Name:    uit.mpei.ru
+Address:  10.1.6.13
+
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git remote add origin git@uit.mpei.ru:IvanovIvM/cs-lab02.git
+error: remote origin already exists.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push -u origin main
+remote: Verify
+fatal: Authentication failed for 'http://uit.mpei.ru/git/IvanovIvM/cs-lab02.git/'
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git remote set-url origin git@uit.mpei.ru:IvanovIvM/cs-lab02.git
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push -u origin main
+ssh: connect to host uit.mpei.ru port 22: Connection timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git remote set-url origin git@uit.mpei.ru:IvanovIvM/cs-lab02.git
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push -u origin main
+The authenticity of host 'uit.mpei.ru (10.1.6.13)' can't be established.
+ED25519 key fingerprint is SHA256:Q5w0UKEzQKA3J6NyMtjwCLvtAykoxdugIXjx6NwU4NA.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'uit.mpei.ru' (ED25519) to the list of known hosts.
+ssh_dispatch_run_fatal: Connection to 10.1.6.13 port 22: Broken pipe
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git remote set-url origin git@uit.mpei.ru:IvanovIvM/cs-lab02.git
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push -u origin main
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (15/15), 1.98 KiB | 405.00 KiB/s, done.
+Total 15 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To uit.mpei.ru:IvanovIvM/cs-lab02.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+
+\
+\
+\ Начало работы с бобом
+\
+\
+
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git remote -v  // адрес, который использовался в команде git remote add
+origin  git@uit.mpei.ru:IvanovIvM/cs-lab02.git (fetch)
+origin  git@uit.mpei.ru:IvanovIvM/cs-lab02.git (push)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git fetch  // выполним загрузку изменений 
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 374 bytes | 31.00 KiB/s, done.
+From uit.mpei.ru:IvanovIvM/cs-lab02
+   54683f8..d5d8d55  main       -> origin/main
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* d5d8d55 (origin/main) code: произведение
+* 54683f8 (HEAD -> main) first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git pull --ff-only
+error: Your local changes to the following files would be overwritten by merge:
+        main.cpp
+Please commit your changes or stash them before you merge.
+Aborting
+Updating 54683f8..d5d8d55
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* d5d8d55 (origin/main) code: произведение
+* 54683f8 (HEAD -> main) first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git pull --ff-only
+error: Your local changes to the following files would be overwritten by merge:
+        main.cpp
+Please commit your changes or stash them before you merge.
+Aborting
+Updating 54683f8..d5d8d55
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4 (mai)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* d5d8d55 (origin/main) code: произведение
+* 54683f8 (HEAD -> main) first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git pull --ff-only
+error: Your local changes to the following files would be overwritten by merge:
+        main.cpp
+Please commit your changes or stash them before you merge.
+Aborting
+Updating 54683f8..d5d8d55
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git add main.cpp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git commit -m 'code: Ввывод суммы и разности'
+[main 913feca] code: Ввывод суммы и разности
+ 1 file changed, 2 insertions(+)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 913feca (HEAD -> main) code: Ввывод суммы и разности
+| * d5d8d55 (origin/main) code: произведение
+|/
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git pull --ff-only
+hint: Diverging branches can't be fast-forwarded, you need to either:
+hint:
+hint:   git merge --no-ff
+hint:
+hint: or:
+hint:
+hint:   git rebase
+hint:
+hint: Disable this message with "git config advice.diverging false"
+fatal: Not possible to fast-forward, aborting.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git reset
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 913feca (HEAD -> main) code: Ввывод суммы и разности
+| * d5d8d55 (origin/main) code: произведение
+|/
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log
+commit 913fecad0c87c8630c7c09b1d005c517a8c1b7b0 (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 15:01:24 2024 +0300
+
+    code: Ввывод суммы и разности
+
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4 (mai)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git reset --hard HEAD
+HEAD is now at 913feca code: Ввывод суммы и разности
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 913feca (HEAD -> main) code: Ввывод суммы и разности
+| * d5d8d55 (origin/main) code: произведение
+|/
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log
+commit 913fecad0c87c8630c7c09b1d005c517a8c1b7b0 (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 15:01:24 2024 +0300
+
+    code: Ввывод суммы и разности
+
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4 (mai)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git restore
+fatal: you must specify path(s) to restore
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git resort
+git: 'resort' is not a git command. See 'git --help'.
+
+The most similar command is
+        restore
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git reset
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 913feca (HEAD -> main) code: Ввывод суммы и разности
+| * d5d8d55 (origin/main) code: произведение
+|/
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log
+commit 913fecad0c87c8630c7c09b1d005c517a8c1b7b0 (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 15:01:24 2024 +0300
+
+    code: Ввывод суммы и разности
+
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4 (mai)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git reset --hard HEAD~1
+HEAD is now at 54683f8 first commit
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f (HEAD -> main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4 (mai)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* d5d8d55 (origin/main) code: произведение
+* 54683f8 (HEAD -> main) first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git pull --ff-only
+Updating 54683f8..d5d8d55
+Fast-forward
+ main.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log
+commit d5d8d55fd442fe41c8d65afd6feb8109be72f3fd (HEAD -> main, origin/main)
+Author: Bob (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 14:27:50 2024 +0300
+
+    code: произведение
+
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4 (mai)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git add main.cpp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git commit -m 'code: Вывод деления'
+[main 926f226] code: Вывод деления
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push
+ssh: connect to host uit.mpei.ru port 22: Connection timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 402 bytes | 402.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To uit.mpei.ru:IvanovIvM/cs-lab02.git
+   d5d8d55..926f226  main -> main
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log
+commit 926f22670e3cbe1049bd3483946fcad14e5f0373 (HEAD -> main, origin/main)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 19:18:58 2024 +0300
+
+    code: Вывод деления
+
+commit d5d8d55fd442fe41c8d65afd6feb8109be72f3fd
+Author: Bob (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Sat Mar 9 14:27:50 2024 +0300
+
+    code: произведение
+
+commit 54683f8984ecc971cfd6e16b18e5f5c19759579f
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Wed Mar 6 16:58:32 2024 +0300
+
+    first commit
+
+commit 11b7e11685e2eb8ed504d3968a2834a5a9537fc4 (mai)
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:47:20 2024 +0300
+
+    code: Вывод суммы и разности
+
+commit d58e73ff6e10f44afb946012d406ab690b5de4ec
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:45:28 2024 +0300
+
+    code: Вывод суммы
+
+commit e1ae209bde86c5ba18e5faafadd7e4e2e52319eb
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:42:22 2024 +0300
+
+    build: добавлен файл проекта
+
+commit c266d31d0b2759ddeca814017d3ca6801462dfac
+Author: Alice (IvanovIM) <IvanovIvM@mpei.ru>
+Date:   Tue Mar 5 23:28:57 2024 +0300
+
+    code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git add main.cpp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git commit -m "code: Вывод максимума"
+[main 0ee2426] code: Вывод максимума
+ 1 file changed, 4 insertions(+)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 438 bytes | 219.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To uit.mpei.ru:IvanovIvM/cs-lab02.git
+   926f226..0ee2426  main -> main
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git branch double
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git checkout double
+Switched to branch 'double'
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (double)
+$ git add main.cpp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (double)
+$ git commit -m 'code: Изменение типа переменных int -> double'
+[double 829d557] code: Изменение типа переменных int -> double
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (double)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git fetch
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 386 bytes | 20.00 KiB/s, done.
+From uit.mpei.ru:IvanovIvM/cs-lab02
+   0ee2426..771cd06  main       -> origin/main
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 829d557 (double) code: Изменение типа переменных int -> double
+| * 771cd06 (origin/main) code: Вывод минимума
+|/
+* 0ee2426 (HEAD -> main) code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git merge double
+Updating 0ee2426..829d557
+Fast-forward
+ main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push
+To uit.mpei.ru:IvanovIvM/cs-lab02.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'uit.mpei.ru:IvanovIvM/cs-lab02.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 829d557 (HEAD -> main, double) code: Изменение типа переменных int -> double
+| * 771cd06 (origin/main) code: Вывод минимума
+|/
+* 0ee2426 code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git add main.cpp
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 829d557 (HEAD -> main, double) code: Изменение типа переменных int -> double
+| * 771cd06 (origin/main) code: Вывод минимума
+|/
+* 0ee2426 code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git reset --hard HEAD~1
+HEAD is now at 0ee2426 code: Вывод максимума
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 829d557 (double) code: Изменение типа переменных int -> double
+| * 771cd06 (origin/main) code: Вывод минимума
+|/
+* 0ee2426 (HEAD -> main) code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git pull
+Updating 0ee2426..771cd06
+Fast-forward
+ main.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 829d557 (double) code: Изменение типа переменных int -> double
+| * 771cd06 (HEAD -> main, origin/main) code: Вывод минимума
+|/
+* 0ee2426 code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push
+Everything up-to-date
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+* 829d557 (double) code: Изменение типа переменных int -> double
+| * 771cd06 (HEAD -> main, origin/main) code: Вывод минимума
+|/
+* 0ee2426 code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git merge double
+Auto-merging main.cpp
+Merge made by the 'ort' strategy.
+ main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git log --oneline --decorate --all --graph
+*   ad6cad1 (HEAD -> main) Merge branch 'double'
+|\
+| * 829d557 (double) code: Изменение типа переменных int -> double
+* | 771cd06 (origin/main) code: Вывод минимума
+|/
+* 0ee2426 code: Вывод максимума
+* 926f226 code: Вывод деления
+* d5d8d55 code: произведение
+* 54683f8 first commit
+* 11b7e11 (mai) code: Вывод суммы и разности
+* d58e73f code: Вывод суммы
+* e1ae209 build: добавлен файл проекта
+* c266d31 code: заготовка программы
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$ git push
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 746 bytes | 373.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To uit.mpei.ru:IvanovIvM/cs-lab02.git
+   771cd06..ad6cad1  main -> main
+
+ivanm@LAPTOP-54AHA1CP MINGW64 ~/OneDrive/Рабочий стол/lab02/alice/project (main)
+$
